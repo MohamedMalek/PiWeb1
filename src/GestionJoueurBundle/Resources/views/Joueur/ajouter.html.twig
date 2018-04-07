@@ -1,0 +1,35 @@
+{% extends 'BackOfficeBundle:Default:base.html.twig' %}
+
+{% block container  %}
+
+<form method="post">
+    <fieldset>
+        <legend>ajouter Joueur</legend>
+
+            Nom <input type="text" id='nom' name="nom"><br>
+            position
+            <select id="position" name="position">
+                <option value="defenseur">defenseur</option>
+                <option value="attaquant">attaquant</option>
+                <option value="Gardien">attaquant</option>
+            </select><br>
+
+            Equipe
+            <select id="idEquipe" name="idEquipe">
+                {% for Equipe in Equipes %}
+                <option value="{{ Equipe }}">{{ Equipe.pays }}</option>
+                {% endfor %}
+            </select>
+        <br>
+            BUT <input type="number" id='nombreDeButs' name="nombreDeButs"><br>
+            Carton Jaune <input type="number" id='cartjaune' name="cartjaune"><br>
+            Carton Rouge <input type="number" id='cartrouge' name="cartrouge"><br>
+            Numéro du maillot <input type="number" id='numeromaillot' name="numeromaillot"><br>
+
+        <button type="submit">ajouter</button>
+        </div>
+    </fieldset>
+</form>
+
+{% endblock %}
+

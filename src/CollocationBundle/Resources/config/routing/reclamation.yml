@@ -1,0 +1,48 @@
+reclamation_index:
+    path:     /
+    defaults: { _controller: "CollocationBundle:Reclamation:index" }
+    methods:  GET
+
+reclamation_show:
+    path:     /{id}/show
+    defaults: { _controller: "CollocationBundle:Reclamation:show" }
+    methods:  GET
+
+reclamation_new:
+    path:     /new/{id}
+    defaults: { _controller: "CollocationBundle:Reclamation:new" }
+    methods:  [GET, POST]
+
+reclamation_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "CollocationBundle:Reclamation:edit" }
+    methods:  [GET, POST]
+
+reclamation_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "CollocationBundle:Reclamation:delete" }
+    methods:  DELETE
+
+annonce_delete:
+    path:     /deleteannonce/{idAnnonce}/{id}
+    defaults: { _controller: "CollocationBundle:Reclamation:deleteAnnonce" }
+    methods:  [GET, POST]
+
+annonce_restituer:
+    path:     /Restituer/{idAnnonce}/{id}
+    defaults: { _controller: "CollocationBundle:Reclamation:RestituerAnnonce" }
+    methods:  [GET, POST]
+
+annonce_blacklister:
+    path:     /BlackLister/{idAnnonce}/{id}
+    defaults: { _controller: "CollocationBundle:Reclamation:BlackListerAnnonce" }
+    methods:  [GET, POST]
+
+BlackList:
+    path:     /blacklist
+    defaults: { _controller: "CollocationBundle:Reclamation:GoToBlackListAnnonce" }
+    methods:  [GET, POST]
+
+
+
+

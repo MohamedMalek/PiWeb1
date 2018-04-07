@@ -1,0 +1,28 @@
+match_homepage:
+    path:     /
+    defaults: { _controller: MatchBundle:Default:index }
+
+matchs_index:
+    path:     /ind
+    defaults: { _controller: "MatchBundle:Matchs:index" }
+    methods:  GET
+
+matchs_show:
+    path:     /{idMatch}/show
+    defaults: { _controller: "MatchBundle:Matchs:show" }
+    methods:  GET
+
+matchs_new:
+    path:     /new
+    defaults: { _controller: "MatchBundle:Matchs:new" }
+    methods:  [GET, POST]
+
+matchs_edit:
+    path:     /{idMatch}/edit
+    defaults: { _controller: "MatchBundle:Matchs:edit" }
+    methods:  [GET, POST]
+
+matchs_delete:
+    path:     /{idMatch}/delete
+    defaults: { _controller: "MatchBundle:Matchs:delete" }
+    methods:  DELETE

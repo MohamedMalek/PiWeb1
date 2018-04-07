@@ -1,0 +1,88 @@
+back_office_homepage:
+    path:     /
+    defaults: { _controller: BackOfficeBundle:Default:index }
+
+gestion_equipe_homepage:
+    path:     /
+    defaults: { _controller: GestionEquipeBundle:Default:index }
+
+AjouterEquipe:
+    path:     /AjouterEquipe
+    defaults: { _controller: GestionEquipeBundle:Equipe:ajouterEquipe }
+
+AfficherEquipe:
+    path:     /AfficherEquipe
+    defaults: { _controller: GestionEquipeBundle:Equipe:afficherEquipe }
+
+ModifierEquipe:
+    path:     /ModifierEquipe/{id}
+    defaults: { _controller: GestionEquipeBundle:Equipe:modifierEquipe }
+
+supprimerEquipe:
+        path:     /supprimerEquipe/{id}
+        defaults: { _controller: GestionEquipeBundle:Equipe:supprimerEquipe }
+
+UpdateDQL:
+            path:     /UpdateDQL/{id}/{pays}/{etat}/{phase}/{groupe}/{sel}/{point}/{lien}
+            defaults: { _controller: GestionEquipeBundle:Equipe:UpdateDQL  }
+
+afficherJoueurEquiped:
+    path:     /afficherJoueurEquipe/{id}
+    defaults: { _controller: GestionJoueurBundle:Default:afficherJoueurEquipe  }
+
+afficherJoueurParEquipe:
+    path:     /afficherJoueurParEquipe/{id}
+    defaults: { _controller: GestionJoueurBundle:Joueur:afficherJoueurParEquipe  }
+
+
+gestion_joueur_homepage:
+    path:     /
+    defaults: { _controller: GestionJoueurBundle:Default:index }
+
+afficherJoueurEquipe:
+    path:     /afficherJoueurEquipe/{id}
+    defaults: { _controller: GestionJoueurBundle:Joueur:afficherJoueurEquipe  }
+
+afficherJoueurParEquipe:
+    path:     /afficherJoueurParEquipe/{id}
+    defaults: { _controller: GestionJoueurBundle:Joueur:afficherJoueurParEquipe  }
+
+joueur_index:
+    path:     /
+    defaults: { _controller: "GestionJoueurBundle:Joueur:index" }
+    methods:  GET
+
+joueur_show:
+    path:     /{idJoueur}/show
+    defaults: { _controller: "GestionJoueurBundle:Joueur:show" }
+    methods:  GET
+
+AfficherEquipeAdmin:
+     path:     /AfficherEquipeAdmin
+     defaults: { _controller: GestionEquipeBundle:Equipe:afficherEquipeAdmin }
+
+ajouterJoueur:
+    path:     /ajouterJoueur
+    defaults: { _controller: "GestionJoueurBundle:Joueur:ajouterJoueur" }
+    methods:  [GET, POST]
+
+joueur_edit:
+    path:     /{idJoueur}/edit
+    defaults: { _controller: "GestionJoueurBundle:Joueur:edit" }
+    methods:  [GET, POST]
+
+joueur_delete:
+    path:     /{idJoueur}/delete
+    defaults: { _controller: "GestionJoueurBundle:Joueur:delete" }
+    methods:  DELETE
+
+stade_new:
+    path:     /new
+    defaults: { _controller: "StBundle:Stade:new" }
+    methods:  [GET, POST]
+
+
+
+
+
+

@@ -1,0 +1,39 @@
+{% block containerj  %}
+
+    {% for Equipe in Equipes %}
+<!-- crewman1 -->
+        <a href=" {{path('afficherJoueurParEquipe',{'id':Equipe.idEquipe})}}">
+<div class="item">
+    <div class="crewman_item">
+
+        <div class="crewman">
+            <img src="http://localhost/PiWeb/TeamFlags/{{ Equipe.Liendrapeau }}" alt="" />
+        </div>
+
+        <div class="crewman_descr center">
+            <div class="crewman_descr_cont">
+                <p>{{ Equipe.pays }}</p>
+                <span>{{ Equipe.selecteur }}</span>
+                <span>{{  Equipe.phase  }}</span>
+                <span>{{ Equipe.groupe }}</span>
+            </div>
+        </div>
+
+    </div>
+</div>
+        </a>
+<!-- crewman1 -->
+<!--
+            <td><a href=" {#{{path('afficherJoueurEquiped',{'id':Equipe.idEquipe})}}">{{ Equipe.pays }} </a> </td>
+            <td> {{ Equipe.etat }}</td>
+            <td> {{ Equipe.phase }}</td>
+            <td> {{ Equipe.groupe }}</td>
+            <td> {{ Equipe.selecteur }}</td>
+            <td> {{ Equipe.point }}</td>
+            <td><img src="http://localhost/PiWeb/TeamFlags/{{ Equipe.Liendrapeau }}" width="100" height="100"></td>
+            <td><a href="{{path('ModifierEquipe',{'id':Equipe.idEquipe})}}">modifier </a>
+            <td><a href="{{path('supprimerEquipe',{'id':Equipe.idEquipe})}}">Supprimer </a>
+
+-->#}
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends 'BackOfficeBundle:Default:base.html.twig' %}
+
+
+{% block body %}
+    <h1>Reclamations list</h1>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Datecreation</th>
+            <th>    </th>
+            <th>Sujet</th>
+            <th>    </th>
+            <th>Message</th>
+            <th>    </th>
+            <th>Afficher Annonce</th>
+            <th>    </th>
+            <th>Ignorer</th>
+            <th>    </th>
+            <th>Accepter</th>
+
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for reclamation in reclamations %}
+            <tr>
+                <td><a href="{{ path('reclamation_show', { 'id': reclamation.id }) }}">{{ reclamation.id }}</a></td>
+                <td>{% if reclamation.dateCreation %}{{ reclamation.dateCreation|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ reclamation.sujet }}</td>
+                <td>{{ reclamation.message|raw }}</td>
+                <td> <a href="#null" onclick="javascript:open_infos();">Voir Annonce</a></td>
+                <td> <a href="{{ path('reclamation_show', { 'id': reclamation.id }) }}">show</a> </td>
+                <td> <a href="{{ path('reclamation_delete', { 'id': reclamation.id }) }}">Ignorer</a> </td>
+                <td> <a href="{{ path('annonce_delete' , { 'idAnnonce': reclamation.idAnnonce.idAnnonce,'id': reclamation.id }) }}">Supprimer Annonce</a> </td>
+                <td> <a href="{{ path('annonce_restituer' , { 'idAnnonce': reclamation.idAnnonce.idAnnonce,'id': reclamation.id }) }}"></a>Restituer </td>
+
+
+                <script>
+                    function open_infos()
+                    {
+                        window.open("{{ path('annoncecollocation_show', { 'idAnnonce': reclamation.idAnnonce.idAnnonce }) }}",'Annonce','menubar=no, scrollbars=yes, top=100, left=100, width=800, height=700');
+                    }
+                </script>
+                </td>
+
+
+
+
+
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            {#          <a href="{{ path('reclamation_new') }}">Create a new reclamation</a>#}
+        </li>
+    </ul>
+{% endblock %}

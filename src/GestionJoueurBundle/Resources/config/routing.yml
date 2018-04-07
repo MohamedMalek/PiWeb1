@@ -1,0 +1,39 @@
+gestion_joueur_homepage:
+    path:     /
+    defaults: { _controller: GestionJoueurBundle:Default:index }
+
+afficherJoueurEquipe:
+    path:     /afficherJoueurEquipe/{id}
+    defaults: { _controller: GestionJoueurBundle:Joueur:afficherJoueurEquipe  }
+
+afficherJoueurParEquipe:
+    path:     /afficherJoueurParEquipe/{id}
+    defaults: { _controller: GestionJoueurBundle:Joueur:afficherJoueurParEquipe  }
+
+joueur_index:
+    path:     /
+    defaults: { _controller: "GestionJoueurBundle:Joueur:index" }
+    methods:  GET
+
+joueur_show:
+    path:     /{idJoueur}/show
+    defaults: { _controller: "GestionJoueurBundle:Joueur:show" }
+    methods:  GET
+
+ajouterJoueur:
+    path:     /ajouterJoueur
+    defaults: { _controller: "GestionJoueurBundle:Joueur:ajouterJoueur" }
+    methods:  [GET, POST]
+
+joueur_edit:
+    path:     /{idJoueur}/edit
+    defaults: { _controller: "GestionJoueurBundle:Joueur:edit" }
+    methods:  [GET, POST]
+
+joueur_delete:
+    path:     /{idJoueur}/delete
+    defaults: { _controller: "GestionJoueurBundle:Joueur:delete" }
+    methods:  DELETE
+
+
+

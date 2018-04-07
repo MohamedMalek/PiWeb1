@@ -1,0 +1,42 @@
+{% extends 'BackOfficeBundle:Default:base.html.twig' %}
+{% block container  %}
+    bonjour
+
+    <form method="post">
+        <fieldset>
+            <legend>ajouter Equipe</legend>
+
+            Pays <input type="text" id='pays' name="pays"><br>
+            Etat <select id="etat" name="etat">
+                <option value="1">IN</option>
+                <option value="0">OUT</option>
+            </select><br>
+            Phase <select id="phase" name="phase">
+                <option value="groupe">groupe</option>
+                <option value="1/8">1/8</option>
+                <option value="1/4">1/4</option>
+                <option value="1/2">1/2</option>
+                <option value="finale">Finale</option>
+            </select><br>
+            Groupe <select id="groupe" name="groupe">
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+                <option value="D">D</option>
+                <option value="C">E</option>
+                <option value="D">F</option>
+                <option value="C">G</option>
+                <option value="D">H</option>
+            </select><br>
+            Selectionneur <input type="text" id='selecteur' name="selecteur"><br>
+            Point <input type="number" id='point' name="point"><br>
+            Selectionnez un drapeau:
+            <br>  <img id="drapeau" alt="image drapeau" width="100" height="100"  src="#"/><br> <br>  <br>
+            <input type="file" name="liendrapeau" id="liendrapeau" accept="image/*"><br>
+            <br>
+            <button type="submit">ajouter</button>
+
+        </fieldset>
+    </form>
+
+{% endblock %}

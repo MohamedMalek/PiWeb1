@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Likeequipe</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Idlike</th>
+                <td>{{ likeEquipe.idLike }}</td>
+            </tr>
+            <tr>
+                <th>Lik</th>
+                <td>{{ likeEquipe.lik }}</td>
+            </tr>
+            <tr>
+                <th>Dislik</th>
+                <td>{{ likeEquipe.dislik }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('likeequipe_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('likeequipe_edit', { 'idLike': likeEquipe.idLike }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

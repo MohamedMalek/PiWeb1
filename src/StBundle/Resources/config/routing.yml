@@ -1,0 +1,21 @@
+stade_index:
+    path:     /
+    defaults: { _controller: "StBundle:Stade:index" }
+    methods:  GET
+
+stade_show:
+    path:     /{id}/show
+    defaults: { _controller: "StBundle:Stade:show" }
+    methods:  GET
+
+
+
+stade_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "StBundle:Stade:edit" }
+    methods:  [GET, POST]
+
+stade_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "StBundle:Stade:delete" }
+    methods:  DELETE

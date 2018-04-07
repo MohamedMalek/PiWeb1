@@ -1,0 +1,135 @@
+{% extends 'layout.html.twig' %}
+{% block body %}
+    <div id="main">
+
+        <div id="content">
+            <div id="column">
+
+
+    <form method="post" action="{{ path('gestionticket_reserver',{'id':ticketss.idTicket}) }}}">
+
+        <div class="list-group">
+
+            <figure class="snip1195">
+                <h4>{{ ticketss.idAnnonceur.username }}</h4>
+                <div class="image">
+                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sq-sample14.jpg" alt="sq-sample14"/>
+                </div>
+                <div class="rating">
+                    <i class="ion-ios-star"></i><i class="ion-ios-star"></i><i class="ion-ios-star"></i><i class="ion-ios-star"></i><i class="ion-ios-star-outline"></i>
+                </div>
+                <figcaption class="aaa">
+
+
+                    <div id="flex">
+                        <div><p class="event">{{ ticketss.idmatch.nomEquipe1 }} VS
+                                {{ ticketss.idmatch.nomEquipe2 }}</p>
+                            <h2 >  {{ ticketss.categories }}</h2>
+                        </div>
+                        <div class="fix"></div>
+                        <div>
+                            <div class="sce">
+                                <div class="icon">
+                                    <i class="fa fa-table"></i>
+                                </div>
+                                <p> {{ ticketss.idmatch.date }}</p>
+
+                            </div>
+                            <div class="fix"></div>
+                            <div class="loc">
+                                <div class="icon">
+                                    <i class="fa fa-map-marker"></i>
+                                </div>
+                                <p> {{ ticketss.idmatch.nomStade }}</p>
+                            </div>
+
+                        </div>
+                        <div class="fix"></div>
+                        <div>
+                            <div class="loc">
+                                <div class="icon">
+                                    <i class="fa fa-clock-o"></i>
+                                </div>
+                                <p>{{ ticketss.idmatch.heure }} Am</p>
+
+                            </div>
+                            <div class="fix"></div>
+                            <div class="sce">
+                                <div class="icon">
+                                    <i class="fa fa-ticket"></i>
+
+                                </div>
+                                <p > ticket Disponible :  {{ ticketss.nbticket }}</p>
+                                    <input id="nbti0" >
+                            </div>
+
+                        </div>
+                        <div class="price">
+                            ${{ ticketss.prix }}
+                        </div>
+
+                    </div>
+
+
+                </figcaption>
+
+
+
+            </figure>
+
+
+
+        </div>
+
+
+
+   <table>
+       <h1> Corrdonnée du posteur </h1>
+       <tr>
+           <th> Nom du Posteur : </th>
+           <th>  Email du posteur :  </th>
+
+       </tr>
+
+                 <td>{{ ticketss.idAnnonceur.username }} </td>
+               <td>{{ ticketss.idAnnonceur.email }} </td>
+             nbre tickets <input type="number" id="nbrti" name="nombreticket" value=""min="0" max="{{  ticketss.nbticket  }}" >
+
+
+                <td>   <button  type="submit"> confirmer</button></td>
+   </table>
+                </form>
+</div>
+</div>
+</div>
+    <script src="{{ asset('js/') }}jquery-2.1.1.js"> </script>
+<script language="JavaScript">
+    $('button').click(function () {
+        var nbrti =document.getElementById(nbrti).value;
+$('nbti0').val(nbrti);
+        
+    });
+    
+    $('#nbrti').change(function () {
+        console.log("changes");
+        $('#nbti0').val($('#nbrti').val());
+    })
+  /*  function reserver() {
+        
+       /* var x=document.getElementById(nbrti).value;
+        var y =document.getElementById(nbti0).value;
+      *//*
+    var txt=document.getElementById('nbrti').value;
+    document.getElementById('nbti0').value=txt;
+*/
+
+
+</script>
+    <link rel="stylesheet" href="{{ asset('gestionticket/css/') }}style.css">
+
+    <script  src="{{ asset('gestionticket/js/') }}index.js"></script>
+    <link rel="stylesheet" href="{{ asset('gestionticket/css/') }}styleafichage.css">
+
+    <link rel="stylesheet" href="{{ asset('gestionticket/css/') }}stylereserver.css">
+    <script  src="{{ asset('gestionticket/js/') }}indexreserver.js"></script>
+{% endblock %}

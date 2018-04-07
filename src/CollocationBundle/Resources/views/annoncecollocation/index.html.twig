@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css'>
+    <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'>
+    <link rel="stylesheet" href="{{ asset('CollocationRessources/css/style1.css')}}"> <!-- Resource style -->
+    <script src="{{ asset('CollocationRessources/js/modernizr.js')}}"></script> <!-- Modernizr -->
+    <script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js')}}"></script>
+    <style>
+        body, html {
+            height: 80%;
+            padding:0;
+            margin:0;
+            overflow-x: hidden;
+        }
+
+
+        .container {
+            margin: auto;
+        }
+
+        .myPara{
+            height: 80%;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-attachment: fixed;
+            position: relative;
+            margin:0;
+        }
+
+        #img-1{
+            background-image:  url("https://images.pexels.com/photos/313782/pexels-photo-313782.jpeg?w=940&h=650&auto=compress&cs=tinysrgb");
+        }
+
+        #img-2 {
+            background-image: url("http://img07.deviantart.net/c0a5/i/2012/353/e/2/autumn_railroad_by_celem-d5ogfhq.jpg");
+        }
+
+        #img-3 {
+            background-image: url("http://cdn.litlepups.net/2016/02/14/beautiful-cats-pictures-free-download-hd-wallpapers-12.jpg");
+        }
+
+        .text {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 100%;
+            text-align: center;
+            color: #fff;
+            font-size: 30px;
+            padding: 20px;
+
+        }
+
+        .text span.border {
+            letter-spacing: 10px;
+        }
+
+        #page-1 {
+            text-align: justify;
+            background-color:#18B7E0;
+            background-size:cover;
+        //position: absolute;
+            padding: 150px;
+            font-size: 18px;
+            opacity: 0.8;
+        }
+
+        #page-2{
+            background-color: #2E1B36;
+            background-size: cover;
+            margin: 0;
+            position: relative;
+            padding: 30px;
+            color: white;
+        }
+
+
+
+
+    </style>
+
+    <div class="myPara" id="img-1">
+        <div class="text">
+            <span class="border" style="border: 1px solid white;">COOL PLACE</span>
+        </div>
+    </div>
+    <title>Product Quick View | CodyHouse</title>
+</head>
+
+<body>
+<header>
+    <h1>Product Quick View</h1>
+</header>  <div class="container">
+    <hr />
+</div>
+<div class="form-group" style="width: 20%">
+    <label for="usr">Budget Maximal par Nuité:</label>
+    <input type="number" class="form-control" id="prix" >
+</div>
+<div id="div" class="recherche">
+<div class="container">
+
+    <div class="row">
+{% for annonceCollocation in annonceCollocations %}
+
+
+
+
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="labels d-flex justify-content-between position-absolute w-100">
+
+                    </div>
+                    <a href="#">
+                        <img src="{{ asset('UploadsImages/' ~ annonceCollocation.image) }}" class="card-img-top" alt="Product">
+                    </a>
+                    <div>
+                    {{ socialButtons() }}
+                    </div>
+                    <div class="card-body px-2 pb-2 pt-1">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <p class="h4 text-primary">{{ annonceCollocation.tarif }} par jour</p>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <p class="mb-0">
+                        <strong>
+                            <a href="#" class="text-secondary">{{ annonceCollocation.titreAnnonce }}</a>
+                        </strong>
+                    </p>
+                    <p class="mb-1">
+                        <small>
+                            <a href="#" class="text-secondary">{{ annonceCollocation.description }}</a>
+                        </small>
+                    </p>
+
+                    <div class="d-flex justify-content-between">
+                        <div class="col px-0">
+                            <button class="btn btn-outline-primary btn-block">
+                                <a href="{{ path('annoncecollocation_show', { 'idAnnonce': annonceCollocation.idAnnonce }) }}">Plus de détails</a>
+                                <i class="fa fa-info-circle" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                        <div class="ml-2">
+                            <a href="#" class="btn btn-outline-success" data-toggle="tooltip" data-placement="left" title="Add to Wishlist">
+                                <i class="fa fa-heart" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+{% endfor %}
+    </div>
+    </div>
+</div>
+<script>
+
+
+    $(document).ready(function () {
+        $('#prix').on('keyup', function () {
+            alert("malek");
+            $PrixSearch = $(this).val();
+
+            $.ajax({
+                url: "{{ path('_Ajax') }}",
+                data: {'search': $PrixSearch }
+
+            }).done(function (response) {
+                $('.recherche').html(response)
+            }).catch(function (err) {
+
+            });
+        });
+    });
+
+
+</script>
+
+
+
+
+
+
+
+<!-- cd-quick-view -->
+
+
+<script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js')}}"></script>
+<script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/js/bootstrap.min.js')}}"></script> <!-- Resource jQuery -->
+</body>
+</html>

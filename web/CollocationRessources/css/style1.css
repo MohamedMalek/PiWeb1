@@ -1,0 +1,286 @@
+body {
+  font-size: 0.98rem;
+}
+
+.carousel-inner > .item > a > img, .carousel-inner > .item > img, .img-responsive, .thumbnail a > img, .thumbnail > img {
+  display: block !important;
+  max-width: 100% !important;
+  max-height: 400px !important;
+  border-radius: 15px !important;
+}
+
+.timeline {
+  position: relative;
+  padding: 21px 0px 10px;
+  margin-top: 4px;
+  margin-bottom: 30px;
+  margin-left: 126px;
+
+
+}
+
+.timeline .line {
+  position: absolute;
+  width: 4px;
+  display: block;
+  background: currentColor;
+  top: 0px;
+  bottom: 0px;
+  margin-left: 30px;
+}
+
+.timeline .separator {
+  border-top: 1px solid currentColor;
+  padding: 5px;
+  padding-left: 40px;
+  font-style: italic;
+  font-size: .9em;
+  margin-left: 30px;
+}
+
+.timeline .line::before { top: -4px; }
+.timeline .line::after { bottom: -4px; }
+.timeline .line::before,
+.timeline .line::after {
+  content: '';
+  position: absolute;
+  left: -4px;
+  width: 12px;
+  height: 12px;
+  display: block;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.timeline .panel {
+  position: relative;
+  margin: 10px 0px 21px 70px;
+  clear: both;
+}
+
+.timeline .panel::before {
+  position: absolute;
+  display: block;
+  top: 8px;
+  left: -24px;
+  content: '';
+  width: 0px;
+  height: 0px;
+  border: inherit;
+  border-width: 12px;
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+  border-left-color: transparent;
+}
+
+.timeline .panel .panel-heading.icon * { font-size: 20px; vertical-align: middle; line-height: 40px; }
+.timeline .panel .panel-heading.icon {
+  position: absolute;
+  left: -59px;
+  display: block;
+  width: 40px;
+  height: 40px;
+  padding: 0px;
+  border-radius: 50%;
+  text-align: center;
+  float: left;
+}
+
+.timeline .panel-outline {
+  border-color: transparent;
+  background: transparent;
+  box-shadow: none;
+}
+
+.timeline .panel-outline .panel-body {
+  padding: 10px 0px;
+}
+
+.timeline .panel-outline .panel-heading:not(.icon),
+.timeline .panel-outline .panel-footer {
+  display: none;
+}
+
+.form-container {
+  padding: 0 15px;
+}
+.round {
+  border-radius: 4px !important;
+}
+.multiPageForm ul.tabs {
+  overflow: hidden;
+  counter-reset: step;
+  border: none;
+}
+.multiPageForm ul.tabs li {
+  list-style-type: none;
+  color: black;
+  text-transform: uppercase;
+  width: 25%;
+  text-align: center;
+  float: left;
+  position: relative;
+}
+.multiPageForm ul.tabs li.tabs-title a {
+  background-color: transparent;
+  font-size: 16px;
+}
+.multiPageForm ul.tabs li:before {
+  content: counter(step);
+  counter-increment: step;
+  width: 50px;
+  line-height: 50px;
+  display: block;
+  border-radius: 35px;
+  margin: 0 auto 5px auto;
+  background: green;
+  transition: all 1s ease;
+  z-index: 100;
+  position: relative;
+  font-size: 22px;
+  color: white;
+}
+.multiPageForm ul.tabs li:after {
+  content: '';
+  width: 100%;
+  height: 4px;
+  background: green;
+  position: absolute;
+  left: -50%;
+  top: 23px;
+}
+.multiPageForm ul.tabs li:first-child:after {
+  content: none;
+}
+.multiPageForm ul.tabs li.is-active:after {
+  background: green;
+  transition: all 1s ease;
+  color: white;
+}
+.multiPageForm ul.tabs li.is-active:before {
+  background: #004d00;
+  color: white;
+}
+.multiPageForm ul.tabs li.is-active ~ *:before {
+  background: #999999 !important;
+  color: white;
+}
+.multiPageForm ul.tabs li.is-active ~ *:after {
+  background: #999999 !important;
+}
+body {
+  font-family: sans-serif;
+  background-color: #eeeeee;
+}
+
+.file-upload {
+  background-color: #ffffff;
+  width: 300px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.file-upload-btn {
+  width: 100%;
+  margin: 0;
+  color: #fff;
+  background: #1FB264;
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
+  border-bottom: 4px solid #15824B;
+  transition: all .2s ease;
+  outline: none;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.file-upload-btn:hover {
+  background: #1AA059;
+  color: #ffffff;
+  transition: all .2s ease;
+  cursor: pointer;
+}
+
+.file-upload-btn:active {
+  border: 0;
+  transition: all .2s ease;
+}
+
+.file-upload-content {
+  display: none;
+  text-align: center;
+}
+
+.file-upload-input {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  outline: none;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.image-upload-wrap {
+  margin-top: 20px;
+  border: 4px dashed #1FB264;
+  position: relative;
+}
+
+.image-dropping,
+.image-upload-wrap:hover {
+  background-color: #1FB264;
+  border: 4px dashed #ffffff;
+}
+
+.image-title-wrap {
+  padding: 0 15px 15px 15px;
+  color: #222;
+}
+
+.drag-text {
+  text-align: center;
+}
+
+.drag-text h3 {
+  font-weight: 100;
+  text-transform: uppercase;
+  color: #15824B;
+  padding: 60px 0;
+}
+
+.file-upload-image {
+  max-height: 200px;
+  max-width: 200px;
+  margin: auto;
+  padding: 20px;
+}
+
+.remove-image {
+  width: 200px;
+  margin: 0;
+  color: #fff;
+  background: #cd4535;
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
+  border-bottom: 4px solid #b02818;
+  transition: all .2s ease;
+  outline: none;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.remove-image:hover {
+  background: #c13b2a;
+  color: #ffffff;
+  transition: all .2s ease;
+  cursor: pointer;
+}
+
+.remove-image:active {
+  border: 0;
+  transition: all .2s ease;
+}

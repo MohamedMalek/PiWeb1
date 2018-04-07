@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Stades list</h1>
+
+    <table id="example2" class="table table-bordered table-hover" >
+        <thead>
+            <tr>
+
+                <th>Nom</th>
+                <th>Adresse</th>
+                <th>Capacite</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for stade in stades %}
+            <tr>
+
+                <td>{{ stade.nom }}</td>
+                <td>{{ stade.adresse }}</td>
+                <td>{{ stade.capacite }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('stade_show', { 'id': stade.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('stade_edit', { 'id': stade.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('stade_new') }}">Create a new stade</a>
+        </li>
+    </ul>
+{% endblock %}

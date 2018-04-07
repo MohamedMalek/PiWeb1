@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Likeequipes list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Idlike</th>
+                <th>Lik</th>
+                <th>Dislik</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for likeEquipe in likeEquipes %}
+            <tr>
+                <td><a href="{{ path('likeequipe_show', { 'idLike': likeEquipe.idLike }) }}">{{ likeEquipe.idLike }}</a></td>
+                <td>{{ likeEquipe.lik }}</td>
+                <td>{{ likeEquipe.dislik }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('likeequipe_show', { 'idLike': likeEquipe.idLike }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('likeequipe_edit', { 'idLike': likeEquipe.idLike }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('likeequipe_new') }}">Create a new likeEquipe</a>
+        </li>
+    </ul>
+{% endblock %}

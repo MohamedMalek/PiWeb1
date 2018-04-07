@@ -1,0 +1,78 @@
+
+
+
+
+<div class="r">
+
+            <h2>Content</h2>
+            {%  for ticket in events %}
+                <div class="list-group">
+
+                    <figure class="snip1195">
+                        <h4>Casual Top</h4>
+                        <div class="image">
+                            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sq-sample14.jpg" alt="sq-sample14"/>
+                        </div>
+                        <div class="rating">
+                            <i class="ion-ios-star"></i><i class="ion-ios-star"></i><i class="ion-ios-star"></i><i class="ion-ios-star"></i><i class="ion-ios-star-outline"></i>
+                        </div>
+                        <figcaption class="aaa">
+
+
+                            <div id="flex">
+                                <div><p class="event">{{ ticket.idmatch.nomEquipe1 }} VS
+                                        {{ ticket.idmatch.nomEquipe2 }}</p>
+                                    <h2 >  {{ ticket.categories }}</h2>
+                                </div>
+                                <div class="fix"></div>
+                                <div>
+                                    <div class="sce">
+                                        <div class="icon">
+                                            <i class="fa fa-table"></i>
+                                        </div>
+                                        <p> {{ ticket.idmatch.date }}</p>
+
+                                    </div>
+                                    <div class="fix"></div>
+                                    <div class="loc">
+                                        <div class="icon">
+                                            <i class="fa fa-map-marker"></i>
+                                        </div>
+                                        <p> {{ ticket.idmatch.nomStade }}</p>
+                                    </div>
+
+                                </div>
+                                <div class="fix"></div>
+                                <div>
+                                    <div class="loc">
+                                        <div class="icon">
+                                            <i class="fa fa-clock-o"></i>
+                                        </div>
+                                        <p>{{ ticket.idmatch.heure }} Am</p>
+
+                                    </div>
+                                    <div class="fix"></div>
+                                    <div class="sce">
+                                        <div class="icon">
+                                            <i class="fa fa-ticket"></i>
+                                        </div>
+                                        <p> nbr ticket {{ ticket.nbticket }} </p>
+
+                                    </div>
+
+                                </div>
+                                <div class="price">
+                                    ${{ ticket.prix }}
+                                </div>
+
+                            </div>
+
+                        </figcaption>
+                        <a href="#" class="add-to-cart">Add to Cart</a>
+                    </figure>
+
+
+
+                </div>
+            {% endfor %}
+        </div>

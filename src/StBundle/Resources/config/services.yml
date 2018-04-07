@@ -1,0 +1,4 @@
+services:
+#    st.example:
+#        class: StBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

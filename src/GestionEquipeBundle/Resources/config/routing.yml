@@ -1,0 +1,60 @@
+likeequipe_index:
+    path:     /l
+    defaults: { _controller: "GestionEquipeBundle:LikeEquipe:index" }
+    methods:  GET
+
+likeequipe_show:
+    path:     /{idLike}/showl
+    defaults: { _controller: "GestionEquipeBundle:LikeEquipe:show" }
+    methods:  GET
+
+likeequipe_new:
+    path:     /newl
+    defaults: { _controller: "GestionEquipeBundle:LikeEquipe:new" }
+    methods:  [GET, POST]
+
+likeequipe_edit:
+    path:     /{idLike}/editl
+    defaults: { _controller: "GestionEquipeBundle:LikeEquipe:edit" }
+    methods:  [GET, POST]
+
+likeequipe_delete:
+    path:     /{idLike}/deletel
+    defaults: { _controller: "GestionEquipeBundle:LikeEquipe:delete" }
+    methods:  DELETE
+
+gestion_equipe_homepage:
+    path:     /a
+    defaults: { _controller: GestionEquipeBundle:Default:index }
+
+AjouterEquipe:
+    path:     /AjouterEquipe
+    defaults: { _controller: GestionEquipeBundle:Equipe:ajouterEquipe }
+
+AfficherEquipe:
+    path:     /AfficherEquipe
+    defaults: { _controller: GestionEquipeBundle:Equipe:afficherEquipe }
+
+AfficherEquipeAdmin:
+     path:     /AfficherEquipeAdmin
+     defaults: { _controller: GestionEquipeBundle:Equipe:afficherEquipeAdmin }
+
+ModifierEquipe:
+    path:     /ModifierEquipe/{id}
+    defaults: { _controller: GestionEquipeBundle:Equipe:modifierEquipe }
+
+supprimerEquipe:
+        path:     /supprimerEquipe/{id}
+        defaults: { _controller: GestionEquipeBundle:Equipe:supprimerEquipe }
+
+UpdateDQL:
+            path:     /UpdateDQL/{id}/{pays}/{etat}/{phase}/{groupe}/{sel}/{point}/{lien}
+            defaults: { _controller: GestionEquipeBundle:Equipe:UpdateDQL  }
+
+afficherJoueurEquiped:
+    path:     /afficherJoueurEquipe/{id}
+    defaults: { _controller: GestionJoueurBundle:Default:afficherJoueurEquipe  }
+
+afficherJoueurParEquipe:
+    path:     /afficherJoueurParEquipe/{id}
+    defaults: { _controller: GestionJoueurBundle:Joueur:afficherJoueurParEquipe  }

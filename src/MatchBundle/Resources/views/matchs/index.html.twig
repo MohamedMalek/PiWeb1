@@ -1,0 +1,46 @@
+
+{% block body %}
+    <h1>Matchs list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Idmatch</th>
+                <th>Score</th>
+                <th>Score2</th>
+                <th>Date</th>
+                <th>Heure</th>
+                <th>Phase</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for match in matchs %}
+            <tr>
+                <td><a href="{{ path('matchs_show', { 'idMatch': match.idMatch }) }}">{{ match.idMatch }}</a></td>
+                <td>{{ match.score }}</td>
+                <td>{{ match.score2 }}</td>
+                <td>{{ match.date }}</td>
+                <td>{{ match.heure }}</td>
+                <td>{{ match.phase }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('matchs_show', { 'idMatch': match.idMatch }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('matchs_edit', { 'idMatch': match.idMatch }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('matchs_new') }}">Create a new match</a>
+        </li>
+    </ul>
+{% endblock %}

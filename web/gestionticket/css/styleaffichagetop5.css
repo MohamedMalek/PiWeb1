@@ -1,0 +1,147 @@
+@import url(https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css);
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,500,600);
+figure.bbb {
+    font-family: 'Raleway', Arial, sans-serif;
+    position: relative;
+    float: left;
+    overflow: hidden;
+    margin: 10px 1%;
+
+    width: 120%;
+    height: 120px;
+    background: cornflowerblue;
+    color: #ffffff;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+}
+figure.bbb  * {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-transition: all 0.35s ease;
+    transition: all 0.35s ease;
+}
+figure.bbb  .image {
+    background-color: cornflowerblue;
+    width: 20%;
+    overflow: hidden;
+}
+figure.bbb  img {
+    max-width: 100%;
+    vertical-align: top;
+}
+#flex{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+}
+figure.bbb  figcaption {
+    position: absolute;
+    width: 80%;
+    right: 0%;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+figure.bbb  h4,
+figure.bbb  p,
+figure.bbb  .price {
+    margin: 0 0 8px;
+}
+figure.bbb  h4 {
+    position: absolute;
+    width: 20%;
+    top: 10px;
+    text-transform: uppercase;
+    font-weight: 400;
+    color: #ffffff;
+    letter-spacing: 1px;
+    z-index: 1;
+}
+figure.bbb  p {
+    font-size: 0.7em;
+    font-weight: 500;
+    line-height: 1.6em;
+}
+figure.bbb  .rating {
+    position: absolute;
+    width: 20%;
+    line-height: 20px;
+    color: #ffffff;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+figure.bbb  .price {
+    color: #ffffff;
+    font-size: 1.3em;
+    opacity: 0.8;
+    color: #f39c12;
+}
+figure.bbb  .price s {
+  /*  display: inline-block;*/
+    padding: 0 8px 0 0;
+    font-size: 0.85em;
+    color: #f39c12;
+}/*
+figure.bbb .add-to-cart {
+    text-decoration: none;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    font-weight: 600;
+    width: 80%;
+    background-color: rgba(0, 0, 0, 0.2);
+    line-height: 20px;
+    font-size: 0.75em;
+    text-transform: uppercase;
+    color: #ffffff;
+}*/
+figure.bbb :hover img,
+figure.bbb .hover img {
+    opacity: 0.6;
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+figure.bbb :hover .add-to-cart,
+figure.bbb .hover .add-to-cart {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+/* Demo purposes only */
+/*****/
+/*.aaa .title {
+  color: #111;
+  font-size: 34px;
+  margin-bottom: 12px
+}*/
+.aaa  .sce {
+    margin-top: 5px;
+    display: block
+}
+.aaa .sce .icon,  .aaa .sce p,
+.aaa .loc .icon,  .aaa .loc p{
+    float: left;
+    word-spacing: 5px;
+    letter-spacing: 1px;
+    color: #ffffff;
+
+    opacity: 0.8;
+    margin-bottom: 10px;
+}
+.aaa .sce .icon, .aaa .loc .icon {
+    margin-right: 10px;
+    font-size: 20px;
+    color: #ffffff;
+
+    opacity: 0.8;
+}
+.aaa .loc {display: block}
+.fix {clear: both}
+
+
+
+
+
+
+

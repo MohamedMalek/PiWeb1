@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Match</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Idmatch</th>
+                <td>{{ match.idMatch }}</td>
+            </tr>
+            <tr>
+                <th>Score</th>
+                <td>{{ match.score }}</td>
+            </tr>
+            <tr>
+                <th>Score2</th>
+                <td>{{ match.score2 }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ match.date }}</td>
+            </tr>
+            <tr>
+                <th>Heure</th>
+                <td>{{ match.heure }}</td>
+            </tr>
+            <tr>
+                <th>Phase</th>
+                <td>{{ match.phase }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('matchs_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('matchs_edit', { 'idMatch': match.idMatch }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,4 @@
+app_matchs:
+    resource: "@AppBundle/Resources/config/routing/matchs.yml"
+    prefix:   /matchs
+

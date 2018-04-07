@@ -1,0 +1,117 @@
+/* reset styles */
+body {
+    font:12px Arial, Helvetica, sans-serif;
+    background:#fff;
+    color:#000;
+  /*  margin:0;*/
+}
+img {border-style:none;}
+a {
+    text-decoration:none;
+    color:#00f;
+}
+a:hover {text-decoration:underline;}
+input,
+textarea,
+select {
+    font:100% Arial, Helvetica, sans-serif;
+    vertical-align:middle;
+    color:#000;
+}
+form, fieldset {
+    margin:0;
+    padding:0;
+    border-style:none;
+}
+/* example layout styles */
+#wrapper {
+
+    position: relative;
+}
+#main {
+    overflow: hidden;
+    background: #eee;
+   /* margin: 0 auto;*/
+ /*   padding: 10px;*/
+    width: 100%;
+}
+#main h1, #main h2 {
+    font-size: 18px;
+    margin: 0 0 10px;
+}
+#main h1 span, #main h2 span {
+    font-size: 13px;
+    color: #777;
+}
+#header, #footer {
+    text-align: center;
+    background: #ffa;
+ /*   margin: 0 0 10px;*/
+    font-size: 70px;
+  /*  padding: 30px;*/
+    height: 1%;
+}
+#footer {
+    line-height: 200px;
+    margin: 0;
+}
+#content {
+
+    overflow: hidden;
+    width: 100%;
+}
+#aside1, #aside2 {
+    width: 20%;
+    float: left;
+}
+#fixed-example1{
+    background: #ccf;
+    padding: 10px;
+    width: 100%;
+}
+#fixed-example2 {
+    width: 20%;
+    background: #ccf;
+}
+
+#aside2 {
+    float: right;
+}
+#column {
+    padding: 10px;
+
+    width: 60%;
+    margin: 0 0 0 20%;
+}
+#column p {
+    margin: 0 0 10px;
+}
+ul.sample-nav {
+    list-style: none;
+    overflow: hidden;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+ul.sample-nav li {
+    border-top: 1px solid #fff;
+   margin: -1px 0 1px;
+    width: 90%;
+    float: left;
+}
+ul.sample-nav a {
+    color: #000;
+    display: block;
+    padding: 5px 10px;
+}
+.ad-box {
+    text-align: center;
+
+    font-size: 14px;
+    line-height: 100px;
+    padding: 10px;
+    margin: 0 0 10px;
+}
+#aside2 .ad-box {
+    line-height: 100%;
+}

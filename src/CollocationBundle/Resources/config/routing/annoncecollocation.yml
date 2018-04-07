@@ -1,0 +1,32 @@
+annoncecollocation_index:
+    path:     /
+    defaults: { _controller: "CollocationBundle:AnnonceCollocation:index" }
+    methods:  GET
+
+annoncecollocation_show:
+    path:     /{idAnnonce}/show
+    defaults: { _controller: "CollocationBundle:AnnonceCollocation:show" }
+    methods:  GET
+
+annoncecollocation_new:
+    path:     /new
+    defaults: { _controller: "CollocationBundle:AnnonceCollocation:new" }
+    methods:  [GET, POST]
+
+annoncecollocation_edit:
+    path:     /{idAnnonce}/edit
+    defaults: { _controller: "CollocationBundle:AnnonceCollocation:edit" }
+    methods:  [GET, POST]
+
+annoncecollocation_delete:
+    path:     /{idAnnonce}/delete
+    defaults: { _controller: "CollocationBundle:AnnonceCollocation:delete" }
+    methods:  DELETE
+
+Mes_Annonces:
+    path:     /MesAnnonces
+    defaults: { _controller: "CollocationBundle:AnnonceCollocation:MesAnnonces" }
+
+_Ajax:
+    path:     /RechercherAjax
+    defaults: { _controller: "CollocationBundle:AnnonceCollocation:AjaxRecherche" }

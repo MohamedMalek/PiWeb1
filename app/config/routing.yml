@@ -1,0 +1,39 @@
+collocation:
+    resource: "@CollocationBundle/Resources/config/routing/annoncecollocation.yml"
+    prefix:   /Collocation
+
+
+reclamation:
+    resource: "@CollocationBundle/Resources/config/routing/reclamation.yml"
+    prefix:   /reclamation
+
+
+match:
+    resource: "@MatchBundle/Resources/config/routing.yml"
+    prefix:   /GestionMatch
+Stade:
+    resource: "@StBundle/Resources/config/routing.yml"
+    prefix:   /GestionStade
+
+gestionticket:
+    resource: "@gestionticketBundle/Resources/config/routing.yml"
+    prefix:   /gestionticket
+
+back_office:
+    resource: "@BackOfficeBundle/Resources/config/routing.yml"
+    prefix:   /BackOffice
+
+gestion_joueur:
+    resource: "@GestionJoueurBundle/Resources/config/routing.yml"
+    prefix:   /GestionJoueur
+
+gestion_equipe:
+    resource: "@GestionEquipeBundle/Resources/config/routing.yml"
+    prefix:   /GestionEquipe
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"

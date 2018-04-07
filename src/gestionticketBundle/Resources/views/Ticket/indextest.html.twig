@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+    <meta charset="UTF-8">
+    <title>Demo - Index - Theme 2</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css'>
+    <link rel='stylesheet prefetch' href='https://webcontrols.arlo.co/icons8/styles.css'>
+    <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Montserrat:400,700'>
+    <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700'>
+
+    <link rel="stylesheet" href="{{ asset('ticketRssourc/css/') }}style.css">
+
+
+</head>
+
+<body>
+
+<!--
+Arlo Web Control Demo - Index - Theme 2
+Documentation: https://developer.arlo.co/doc/webcontrols/eventtemplatecatalogue
+-->
+
+
+<!-- Target Elements -->
+<div class="arlo">
+    <div class="arlo-catalogue-wrapper">
+
+        <div class="arlo-filters-container">
+            <div class="arlo-filter-content">
+
+                <div class="arlo-result-counter">
+                    <div id="result-count"></div>
+                    <div class="arlo-result-count-text"> courses</div>
+                </div>
+
+                <div id="event-filter"></div>
+                <div id="event-template-filter"></div>
+
+                <div class="arlo-h3">Advanced Filters</div>
+                <div class="arlo-advanced-filters">
+                    <div id="cities-filter"></div>
+                    <div id="citysuburbs-filter"></div>
+                    <div id="states-filter"></div>
+                    <div id="venues-filter"></div>
+                </div>
+
+            </div>
+
+            <div id="arlo-filter-toggle">
+                <div class="arlo-filter-toggle-show">
+                    Show filters <i class="fa fa-chevron-down"></i>
+                </div>
+                <div class="arlo-filter-toggle-hide">
+                    Hide filters <i class="fa fa-chevron-up"></i>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="arlo-event-template-list-container">
+            <div id="arlo-search"></div>
+            <div id="traversable-categories"></div>
+            <div id="event-template-catalogue"></div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Templates -->
+<script type='text/template' id='event-template-catalogue-template'>
+    <div class="arlo-listitem arlo-clearfix arlo-bg-color-highlist arlo-text-color-dark">
+        <div class="arlo-detail arlo-font-primary arlo-text-color-dark">
+            <div class="arlo-title arlo-font-special arlo-text-color-dark">
+                <a href="<%= Uri %>" class="arlo-name arlo-text-color-dark arlo-h2">
+                    <%- Name %>
+                </a>
+            </div>
+
+            <div class="arlo-summary">
+                <%- Description.Summary %>
+            </div>
+            <div class="arlo-advertisedduration">
+                <i class="fa fa-clock-o"></i>
+                <%= AdvertisedDuration %>
+            </div>
+            <div class="arlo-offers">
+                <%= formatAdvertisedOffers({showSingleOffer: true, freeText: "Free"}) %>
+            </div>
+
+            <% if (Tags.length > 0) { %>
+            <div class="arlo-templatetags">
+                <%= formatCollection(Tags, "ul", true) %>
+            </div>
+            <% } %>
+        </div>
+        <div class="arlo-nextrunning-container">
+            <div class="arlo-next-running-title text-color-light">
+                Next Running
+            </div>
+            <div class="arlo-next-running-wrapper">
+                <div class="nextrunning-<%= TemplateID %>">
+                </div>
+            </div>
+        </div>
+
+    </div>
+</script>
+
+<script type='text/template' id='event-filter-template'>
+    <div class="arlo-filter-tag">
+        <%= showFilter({filterCode: "templatetag", displayStyle: "ul", showCount: false, callbacks: {onBeforeRender: "updateTemplateTagNames"}}) %>
+    </div>
+
+    <div class="arlo-h3">Location</div>
+    <%= showFilter({filterCode: "locname", displayStyle: "checkboxes", showCount: false}) %>
+    <%= showFilter({filterCode: "city", showCount: false, targetElement: "#cities-filter"}) %>
+    <%= showFilter({filterCode: "state", showCount: false, targetElement: "#states-filter"}) %>
+    <%= showFilter({filterCode: "venue", showCount: false, targetElement: "#venues-filter"}) %>
+</script>
+
+<script type='text/template' id='event-template-filter-template'>
+    <div class="arlo-h3">Presenter</div>
+    <%= showFilter({filterCode: "advertisedpresenter", showCount: false}) %>
+    <%= showFilter({filterCode: "traversablecategories", showCount: false, targetElement: "#traversable-categories"}) %>
+    <%= showFilter({filterCode: "search", showCount: false, targetElement: "#arlo-search"}) %>
+</script>
+
+<!-- Dependencies -->
+<script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
+<script type="{{ asset('ticketRssourc/text/') }}javascript" src="//packages.arlocdn.net/jscontrols/1.0/resources/resizesensor.js" charset="utf-8"></script>
+<script type="{{ asset('ticketRssourc/text/') }}javascript" src="//packages.arlocdn.net/jscontrols/1.0/resources/elementqueries.js" charset="utf-8"></script>
+<script type="{{ asset('ticketRssourc/text/') }}javascript" src="//connect.arlocdn.net/jscontrols/1.0/init.js" charset="utf-8" defer="defer"></script>
+
+
+
+<script  src="{{ asset('ticketRssourc/js/') }}index.js"></script>
+
+
+
+
+</body>
+q<
+</html>
+{{ asset('ticketRssource/js/') }}

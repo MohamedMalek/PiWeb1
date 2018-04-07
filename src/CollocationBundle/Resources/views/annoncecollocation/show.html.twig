@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ asset('CollocationRessources/css/style1.css')}}">
+    <link href="{{ asset('css/') }}bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js')}}"></script>
+    <script type="text/javascript" src="https://oap.accuweather.com/launch.js"></script>
+    <a href="https://www.accuweather.com/fr/us/new-york-ny/10007/weather-forecast/349727" class="aw-widget-legal">
+        <!--
+        By accessing and/or using this code snippet, you agree to AccuWeather’s terms and conditions (in English) which can be found at https://www.accuweather.com/en/free-weather-widgets/terms and AccuWeather’s Privacy Statement (in English) which can be found at https://www.accuweather.com/en/privacy.
+        -->
+    </a></head>
+<body>
+
+<div class="page-header">
+    <h2>{{ annonceCollocation.titreAnnonce }} </h2>
+</div>
+
+<div class="container">
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+            </ol>
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+
+                <div class="item active">
+                    <img src="{{ asset('UploadsImages/' ~ annonceCollocation.image) }}" alt="Los Angeles" width="100%">
+                    <div class="carousel-caption">
+                        <h3>Los Angeles</h3>
+                        <p>LA is always so much fun!</p>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <img src="{{ asset('UploadsImages/' ~ annonceCollocation.image) }}" alt="Chicago" width="100%">
+                    <div class="carousel-caption">
+                        <h3>Chicago</h3>
+                        <p>Thank you, Chicago!</p>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <img src="{{ asset('UploadsImages/' ~ annonceCollocation.image) }}" alt="Chicago" width="100%">
+                    <div class="carousel-caption">
+                        <h3>Chicago</h3>
+                        <p>Thank you, Chicago!</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Left and right controls -->
+            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+<div style="width:800px;margin-left: 200px">
+    {{ socialButtons({'googleplus':false}) }}
+</div>
+<br>
+<br>
+
+<div id="awcc1522677858694" class="aw-widget-current"  data-locationkey="{{ annonceCollocation.adresse }}" data-unit="c" data-language="fr" data-useip="false" data-uid="awcc1522677858694">
+</div>
+
+
+
+
+
+    <div class="timeline">
+
+
+        <!-- Panel -->
+
+
+        <!-- /Panel -->
+        <div class="line text-muted"></div>
+        <!-- Panel -->
+
+        <!-- /Panel -->
+        <article class="panel panel-primary" style="
+    width: 80%;
+">
+
+            <!-- Icon -->
+            <div class="panel-heading icon">
+                <i class="glyphicon glyphicon-exclamation-sign"></i>
+            </div>
+            <!-- /Icon -->
+
+            <!-- Heading -->
+            <div class="panel-heading">
+                <h2 class="panel-title">Caractéristiques</h2>
+            </div>
+            <!-- /Heading -->
+
+            <!-- Body -->
+            <div class="panel-body">
+                <li><strong>tarif la nuité : </strong> {{ annonceCollocation.tarif }}<br>
+                  <li><strong>L'offre est valide entre :</strong>
+                        {% if annonceCollocation.datedebut %}{{ annonceCollocation.datedebut|date('Y-m-d') }}{% endif %}
+                        <i class="glyphicon glyphicon-arrow-right"></i> {% if annonceCollocation.datefin %}{{ annonceCollocation.datefin|date('Y-m-d') }}{% endif %}
+                        <br>
+                    <li><strong>nombres de Chambres : </strong> {{ annonceCollocation.nombrechambres }}<br>
+                    <li><strong>nombres de lits : </strong> {{ annonceCollocation.nombreslits }}<br>
+
+
+
+
+
+            </div>
+            <!-- /Body -->
+
+            <!-- Footer -->
+            <div class="panel-footer">
+                <small>Footer is also supported!</small>
+            </div>
+            <!-- /Footer -->
+
+        </article>
+        <!-- Panel -->
+
+        <article class="panel panel-primary" style="
+    width: 80%;
+">
+
+            <!-- Icon -->
+            <div class="panel-heading icon">
+                <i class="glyphicon glyphicon-info-sign"></i>
+            </div>
+            <!-- /Icon -->
+
+            <!-- Heading -->
+            <div class="panel-heading">
+                <h2 class="panel-title">Description de l'annonce</h2>
+            </div>
+            <!-- /Heading -->
+
+            <!-- Body -->
+            <div class="panel-body">
+                {{ annonceCollocation.description }}
+            </div>
+            <!-- /Body -->
+
+
+
+        </article>
+        <!-- /Panel -->
+
+        <!-- Separator -->
+
+        <!-- /Separator -->
+
+        <!-- Panel -->
+        <article class="panel panel-primary" style="
+    width: 80%;
+">
+
+            <!-- Icon -->
+            <div class="panel-heading icon">
+                <i class="glyphicon glyphicon-list"></i>
+            </div>
+            <!-- /Icon -->
+
+            <!-- Heading -->
+            <div class="panel-heading">
+                <h2 class="panel-title">Equipements disponibles</h2>
+            </div>
+            <!-- /Heading -->
+
+
+            <!-- List group -->
+            <ul class="list-group">
+                {% set foo = annonceCollocation.equipements|split('<br>') %}
+                {% for i in foo %}
+                    <li class="list-group-item">  {{ i }} </li>
+                {% endfor %}
+
+            </ul>
+
+        </article>
+        <!-- /Panel -->
+
+        <!-- Panel -->
+        <article class="panel panel-info panel-outline" style="
+    width: 80%;
+">
+
+            <!-- Icon -->
+            <div class="panel-heading icon">
+                <i class="glyphicon glyphicon-"></i>
+            </div>
+            <!-- /Icon -->
+
+            <!-- Body -->
+     <iframe  width="800"
+                  height="250"  frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBoVSG3FplX2Ckbl672m4HWjnKK4WS5j2w&q=Eiffel+Tower,Paris+France" >
+                </iframe>
+            <!-- /Body -->
+
+        </article>
+        <!-- /Panel -->
+
+    </div>
+
+
+
+    <ul>
+        <li>
+            <a href="{{ path('annoncecollocation_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('annoncecollocation_edit', { 'idAnnonce': annonceCollocation.idAnnonce }) }}">Edit</a>
+        </li>
+        <li>
+            <a href="{{ path('reclamation_new', { 'id': annonceCollocation.idAnnonce }) }}">reclamer</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+
+    <script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js')}}"></script>
+    <script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/js/bootstrap.min.js')}}"></script> <!-- Resource jQuery -->
+
+</body>
+</html>

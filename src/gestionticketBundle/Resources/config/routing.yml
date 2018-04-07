@@ -1,0 +1,65 @@
+gestionticket_homepage:
+    path:     /
+    defaults: { _controller: gestionticketBundle:Default:index }
+
+
+
+gestionticket_homepage:
+    path:     /
+    defaults: { _controller: gestionticketBundle:Default:index }
+gestionticket_add_ticket:
+    path:     /ajouter
+    defaults: { _controller: gestionticketBundle:Ticket:new }
+gestionticket_afficher_ticket:
+    path:     /afficher
+    defaults: { _controller: gestionticketBundle:Ticket:afficher }
+gestionticket_modifier_ticket:
+    path:     /modifier{id}
+    defaults: { _controller: gestionticketBundle:Ticket:modifier }
+gestionticket_supprimer_ticket:
+    path:     /supprimer{id}
+    defaults: { _controller: gestionticketBundle:Ticket:supprimer }
+gestionticket_top5_ticket:
+    path:     /top5
+    defaults: { _controller: gestionticketBundle:Ticket:top5 }
+recherche_vDQL:
+    path:     /rechDql
+    defaults: { _controller: gestionticketBundle:Ticket:rechercherDQL }
+
+gestionticket_mestticket:
+    path:     /mestticket
+    defaults: { _controller: gestionticketBundle:Ticket:mestticket }
+gestionticket_aa:
+    path:     /aaa
+    defaults: { _controller: gestionticketBundle:Ticket:aa }
+_ajaxd:
+    path:    /recherched/search
+    defaults: { _controller: gestionticketBundle:Ticket:rechercheAjaxd}
+gestionticket_reserver:
+    path:     /reserver{id}
+    defaults: { _controller: gestionticketBundle:Ticket:reserver }
+
+
+
+
+
+
+
+gestionticket_Add_abonnement:
+    path:     /ajouterAb
+    defaults: { _controller: gestionticketBundle:Abonnement:newAb }
+gestionticket_afficher_abonnement:
+    path:     /afficherAb
+    defaults: { _controller: gestionticketBundle:Abonnement:afficherAb }
+gestionticket_modifier_abonnement:
+    path:     /modifierAb/{id}
+    defaults: { _controller: gestionticketBundle:Abonnement:modifierAb }
+gestionticket_supprimer_abonnement:
+    path:     /supprimerAb/{id}
+    defaults: { _controller: gestionticketBundle:Abonnement:supprimerAb }
+gestionticket_aa_abonnement:
+    path:     /afftest
+    defaults: { _controller: gestionticketBundle:Abonnement:aa }
+gestionticket_reserverAb:
+    path:     /reserverAb/{id}
+    defaults: { _controller: gestionticketBundle:Ticket:reserverAb }

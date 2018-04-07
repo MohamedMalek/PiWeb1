@@ -1,0 +1,126 @@
+
+{% extends 'layout.html.twig' %}
+{% block body %}
+
+
+    <div class="container">
+
+        <div class="form-progress">
+            <div><img src="http://res.cloudinary.com/rinma/image/upload/v1497391324/airplane-takeoff-5252_orwmj3.png" class="plane" alt="" /></div>
+            <progress class="form-progress-bar" min="0" max="100" value="0" step="33" aria-labelledby="form-progress-completion"></progress>
+            <div class="form-progress-indicator one active"></div>
+            <div class="form-progress-indicator two"></div>
+            <div class="form-progress-indicator three"></div>
+            <!--    <div class="form-progress-indicator four"></div>-->
+
+            <p id="form-progress-completion" class="js-form-progress-completion sr-only" aria-live="polite">0% complete</p>
+        </div>
+
+
+        <form id="claim"  method="post" action="{{ path('gestionticket_modifier_ticket',{'id':ticketss.idTicket}) }}">
+
+            <section id="step1" class="form-step" data-step="1">
+                <fieldset>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12">
+                            <h2>Tickets</h2>
+                            <h5>1/2</h5>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-6">
+                            <div class="group">
+                                <input  type="number" name="nombreticket" value="{{ ticketss.nbticket }}" min="0" ><span class="highlight"></span><span class="bar"></span>
+                                <label> NibreTickets:</label></div>
+
+                        </div>
+
+
+
+                        <div  >
+                            <div class="group stops" >
+                                <select name="categories" class="col-xs-12 col-sm-6 "  value="{{ ticketss.categories }}">
+                                    <option value="virage"> virage </option>
+                                    <option value="peluse"> peluse </option>
+                                    <option value="gradin"> gradin </option>
+                                </select>
+
+                            </div>
+
+                            <div >
+                                <div class="group stops">
+                                    <select name="match" class="col-xs-12 col-sm-6">
+                                        {% for match in matchs %}
+                                            <option value="{{ match.idMatch}}">{{ match.nomEquipe1}} VS {{ match.nomEquipe2}}</option>
+                                        {% endfor %}
+                                    </select>
+                                    <!--   <input  type="text"><span class="highlight"></span><span class="bar"></span>
+                                        <label> Matchs :</label></div>
+
+                                    <!--  <div id="2nd"class="group stops hidden ">
+                                          <input  type="text"><span class="highlight"></span><span class="bar"></span>
+                                          <label>2nd stop</label></div>
+
+                                      <div id="3rd"class="group stops hidden">
+                                          <input  type="text"><span class="highlight"></span><span class="bar"></span>
+                                          <label>3rd stop</label></div>
+                                 --> </div>
+                                <!--
+                                                    <div class="col-xs-12 col-sm-12">
+                                                        <button type="button" id="connecting" class="btn">+Add connecting flights</button>
+                                                        <button type="button" id="connectingminus" class="btn hidden">-</button>
+                                                    </div>-->
+                            </div>
+                            <div class="col-xs-12 col-sm-12">
+                                <div class="group stops">
+                                    <input  type="number" name="prix" value="{{ ticketss.prix }}"><span class="highlight"></span><span class="bar"></span>
+                                    <label> Prix:</label></div>
+
+                            </div>
+                            <div class="col-xs-12 col-sm-12 right">
+                                <button type="button" id="korak1" class="btn next">Next</button></div>
+                        </div>
+                    </div>
+                </fieldset>
+            </section>
+
+
+
+            <section id="step2" class="form-step hidden" data-step="2">
+                <fieldset>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12">
+                            <h2>Comfirmation!</h2>
+                            <h5>2/2</h5>
+                        </div>
+                        <div class="col-sm-12">
+                            <h4>Vous comfirmez votre ajout ?</h4>
+
+                        </div>
+
+                        <div class="col-xs-12 col-sm-12 right">
+                            <button type="button" id="nazad1" class="btn previous">Previous</button>
+                            <button type="submit" id="korak2" class="btn next" >Ajouter</button>
+
+                        </div>
+                    </div>
+                </fieldset>
+            </section>
+
+
+
+        </form>
+
+
+        <link rel="stylesheet" href="{{ asset('gestionticket/css/') }}stylemodifier.css">
+
+        <script  src="{{ asset('gestionticket/js/') }}indexajouter.js"></script>
+
+
+
+    </div>
+{% endblock %}
+
+
+
+
+

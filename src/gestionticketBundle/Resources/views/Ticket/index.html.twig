@@ -1,0 +1,974 @@
+
+<!--
+<script>
+    function myFunction() {
+        var input, filter, table, tr, td, i;
+        var e = document.getElementById("test");
+        var index = e.options[e.selectedIndex].value;
+        console.log(index);
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("exemple");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[index] ;
+            console.log(td);
+            if (td) {
+                if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+
+</script>
+-->
+<form method="post" action="{{ path('gestionticket_afficher_ticket') }}">
+    <select id="test" >
+        <option value=0> Equipe1</option>
+        <option value=1> Equipe2</option>
+        <option value=2>Stade</option>
+        <option value=6>Prix</option>
+        <option value=5>Categories</option>
+
+    </select>
+    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Recherche .." >
+
+    <table id="exemple" border="2">
+
+        <thead>
+        <tr>
+            <th>  Equipe1 </th>
+            <th> Equipe2</th>
+            <th>  Stade</th>
+
+            <th> Date</th>
+            <th> Heure</th>
+            <th> Catagorie</th>
+            <th>  Prix</th>
+            <th>  NbTickets</th>
+            <th>moyenne</th>
+            <th>annonceur</th>
+            <th> modifier</th>
+            <th>supprimer</th>
+
+        </tr>
+        </thead>
+        <tbody>
+
+        {%  for ticket in ticketss %}
+            <tr>
+                <td> {{ ticket.idmatch.nomEquipe1 }}</td>
+                <td> {{ ticket.idmatch.nomEquipe2 }}</td>
+                <td> {{ ticket.idmatch.nomStade }}</td>
+                <td> {{ ticket.idmatch.date }}</td>
+                <td> {{ ticket.idmatch.heure }}</td>
+                <td> {{ ticket.categories }}</td>
+                <td> {{ ticket.prix }}</td>
+                <td> {{ ticket.nbticket }}</td>
+                <td>  {{ ticket.moyenne }}</td>
+                <td>  {{ ticket.dateajout }}</td>
+                <td>  {{ ticket.idAnnonceur.username }}</td>
+                <td ><a href="{{ path('gestionticket_supprimer_ticket',{'id':ticket.idTicket}) }}">Supprimer</a> </td>
+                <td ><a href="{{ path('gestionticket_modifier_ticket',{'id':ticket.idTicket}) }}">modifier</a> </td>
+
+
+
+            </tr>
+
+        {% endfor %}
+        </tbody>
+    </table>
+
+</form>
+
+<table border="2">
+    <thead>
+    <tr>
+        <th>  Equipe1 </th>
+        <th> Equipe2</th>
+        <th>  Stade</th>
+
+        <th> Date</th>
+        <th> Heure</th>
+        <th> Catagorie</th>
+        <th>  Prix</th>
+        <th>  NbTickets</th>
+        <th>moyenne</th>
+        <th>annonceur</th>
+
+    </tr>
+    </thead>
+    <tbody>
+
+    {%  for ticket in top5 %}
+        <tr>
+            <td> {{ ticket.idmatch.nomEquipe1 }}</td>
+            <td> {{ ticket.idmatch.nomEquipe2 }}</td>
+            <td> {{ ticket.idmatch.nomStade }}</td>
+            <td> {{ ticket.idmatch.date }}</td>
+            <td> {{ ticket.idmatch.heure }}</td>
+            <td> {{ ticket.categories }}</td>
+            <td> {{ ticket.prix }}</td>
+            <td> {{ ticket.nbticket }}</td>
+            <td>  {{ ticket.moyenne }}</td>
+            <td>  {{ ticket.idAnnonceur.username }}</td>
+
+
+        </tr>
+
+    {% endfor %}
+    </tbody>
+</table>
+
+<!--
+<h1>Welcome to the modele:afficher page</h1>
+<div id="affichage">
+    <table border="5">
+        <thead>
+        <tr>
+            <th>  Equipe1 </th>
+            <th> Equipe2</th>
+            <th>  Stade</th>
+
+            <th> Date</th>
+            <th> Heure</th>
+            <th> Catagorie</th>
+            <th>  Prix</th>
+            <th>  NbTickets</th>
+            <th>moyenne</th>
+            <th>annonceur</th>
+
+        </tr>
+        </thead>
+        <tbody>
+
+        {%  for ticket in ticketss %}
+            <tr>
+                <td> {{ ticket.idmatch.nomEquipe1 }}</td>
+                <td> {{ ticket.idmatch.nomEquipe2 }}</td>
+                <td> {{ ticket.idmatch.nomStade }}</td>
+                <td> {{ ticket.idmatch.date }}</td>
+                <td> {{ ticket.idmatch.heure }}</td>
+                <td> {{ ticket.categories }}</td>
+                <td> {{ ticket.prix }}</td>
+                <td> {{ ticket.nbticket }}</td>
+                <td>  {{ ticket.moyenne }}</td>
+                <td>  {{ ticket.idAnnonceur.username }}</td>
+
+
+            </tr>
+
+        {% endfor %}
+        </tbody>
+    </table>
+</div><div id="div"></div>
+<script src="{{ asset('jquery.js') }}"></script>
+<script>
+    $("#formulaire_marque").keyup(
+        function () {
+            var marque=$('#formulaire_marque').val();
+            var DATA ='marque='+marque;
+            $.ajax({
+                type:"POST",
+                url:"{{ path('recherche_vDQL') }}",
+                data:DATA,
+
+                success: function (data) {
+                    console.log("data**");
+                    console.log(data);
+                    // language=HTML
+                    $("#div").html("<table id='res' border='1'>"+
+                        "<td> equipe1 </td>" +
+                        "<td>Data </td>"+
+                        "<td>prix</td></table>");
+                    $.each(data,function (k, el) {
+                        $("#affichage").hide();
+                        $('#res').append(
+                            "<tr>" +
+                            "<td>"+el.idmatch.nomEquipe1+"</td>"+
+                            "<td>"+el.idmatch.date+
+                            "</td>" +
+                            "<td>"+el.prix +"</td>"
+                            +"</tr>"
+                        );
+                    });
+                }
+            });
+        }
+    );
+</script>
+
+
+<div>
+    <div class="container1">
+        {%  for ticket in top5 %}
+            <!-- Batman -->
+<div class="card u-clearfix">
+
+    <div class="card-media">
+        <img src="https://s13.postimg.org/h8spyr37b/lmf2.jpg" alt="" class="card-media-img" />
+
+        <span class="card-media-tag card-media-tag-orange">Action</span>
+
+    </div>
+
+    <div class="card-body">
+        <h2 class="card-body-heading">
+            <div>{{ ticket.idmatch.nomEquipe1 }} VS {{ ticket.idmatch.nomEquipe2 }}</div>
+        </h2>
+        <h6>  </h6>
+        <h6>                                 {{ ticket.idmatch.nomStade }} Le   {{ ticket.idmatch.date }} à {{ ticket.idmatch.heure }}  </h6>
+
+
+
+        <img scr="{{ asset('ticketRssource/img/clock.png') }}" alt="" >
+
+
+        <h6>  {{ ticket.categories }}  {{ ticket.nbticket }} </h6>
+
+
+        <div class="card-body-options">
+            <div class="card-body-option card-body-option-favorite">
+                <svg fill="#9C948A" height="26" viewBox="0 0 24 24" width="26" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M16.5 3c-1.74 0-3.41.81-4.5 2.09C10.91 3.81 9.24 3 7.5 3 4.42 3 2 5.42 2 8.5c0 3.78 3.4 6.86 8.55 11.54L12 21.35l1.45-1.32C18.6 15.36 22 12.28 22 8.5 22 5.42 19.58 3 16.5 3zm-4.4 15.55l-.1.1-.1-.1C7.14 14.24 4 11.39 4 8.5 4 6.5 5.5 5 7.5 5c1.54 0 3.04.99 3.57 2.36h1.87C13.46 5.99 14.96 5 16.5 5c2 0 3.5 1.5 3.5 3.5 0 2.89-3.14 5.74-7.9 10.05z"/>
+                </svg>
+            </div>
+            <div class="card-body-option card-body-option-share">
+                <svg fill="#9C948A" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/>
+                </svg>
+            </div>
+        </div>
+        <ul class="card-body-stars u-clearfix">
+            <li>
+                <svg fill="#D3BCA2" height="28" viewBox="0 0 18 18" width="28" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 11.3l3.71 2.7-1.42-4.36L15 7h-4.55L9 2.5 7.55 7H3l3.71 2.64L5.29 14z"/>
+                    <path d="M0 0h18v18H0z" fill="none"/>
+                </svg>
+            </li>
+            <li>
+                <svg fill="#D3BCA2" height="28" viewBox="0 0 18 18" width="28" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 11.3l3.71 2.7-1.42-4.36L15 7h-4.55L9 2.5 7.55 7H3l3.71 2.64L5.29 14z"/>
+                    <path d="M0 0h18v18H0z" fill="none"/>
+                </svg>
+            </li>
+            <li>
+                <svg fill="#D3BCA2" height="28" viewBox="0 0 18 18" width="28" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 11.3l3.71 2.7-1.42-4.36L15 7h-4.55L9 2.5 7.55 7H3l3.71 2.64L5.29 14z"/>
+                    <path d="M0 0h18v18H0z" fill="none"/>
+                </svg>
+            </li>
+            <li>
+                <svg fill="#D3BCA2" height="28" viewBox="0 0 18 18" width="28" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 11.3l3.71 2.7-1.42-4.36L15 7h-4.55L9 2.5 7.55 7H3l3.71 2.64L5.29 14z"/>
+                    <path d="M0 0h18v18H0z" fill="none"/>
+                </svg>
+            </li>
+            <li>
+                <svg fill="#D3BCA2" height="28" viewBox="0 0 18 18" width="28" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 11.3l3.71 2.7-1.42-4.36L15 7h-4.55L9 2.5 7.55 7H3l3.71 2.64L5.29 14z"/>
+                    <path d="M0 0h18v18H0z" fill="none"/>
+                </svg>
+            </li>
+        </ul>
+        <a href="#/" class="card-button card-button-cta">
+            Buy  ${{ ticket.prix }}
+        </a>
+        <a href="#/" class="card-button card-button-link">
+            More info
+            <span class="card-button-icon">
+          <svg fill="#9C948A" height="16" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 0h24v24H0z" fill="none"/>
+            <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
+          </svg>
+        </span>
+        </a>
+    </div>
+
+</div>
+{% endfor %}
+</div>
+</div>
+
+</div>
+
+
+
+
+
+<div class="container">
+    {%  for ticket in ticketss %}
+
+
+
+    <!--  affichage33333333333-->
+
+
+{% extends 'layout.html.twig' %}
+    {% block body %}
+
+
+
+        <!-- Main Content -->
+
+        <div class="disss">
+        {%  for ticket in ticketss %}
+
+        <div class="container-fluid">
+
+
+
+            <div class="side-body">
+
+                <ul >
+
+                    <li class="cd-item">
+
+                        <img src="{{ asset('imgS/') }}item-1.jpg" alt="Item Preview">
+                        <a href="#0" class="cd-trigger" data-toggle="ouvrir" data-target="#ouvrir{{ticket.idTicket}}" > {{ticket.idTicket}} {{ ticket.idmatch.nomEquipe1 }} VS
+                            {{ ticket.idmatch.nomEquipe2 }} </a>
+                    </li> <!-- cd-item -->
+
+
+                </ul> <!-- cd-items -->
+
+                <div  class="cd-quick-view" id="ouvrir{{ticket.idTicket}}">
+
+                    <div class="cd-slider-wrapper">
+                        <ul class="cd-slider">
+                            <li class="selected"><img src="{{ asset('imgS/') }}item-1.jpg" alt="Product 1"></li>
+                            <li><img src="{{ asset('imgS/') }}item-2.jpg" alt="Product 2"></li>
+                            <li><img src="{{ asset('imgS/') }}item-3.jpg" alt="Product 3"></li>
+                        </ul> <!-- cd-slider -->
+
+                        <ul class="cd-slider-navigation">
+                            <li><a class="cd-next" href="#0">Prev</a></li>
+                            <li><a class="cd-prev" href="#0">Next</a></li>
+                        </ul> <!-- cd-slider-navigation-->
+                    </div> <!-- cd-slider-wrapper -->
+
+                    <div class="cd-item-info">
+
+                        <h2>
+
+                            {{ ticket.idTicket }}
+                            {{ ticket.idmatch.nomEquipe1 }} VS
+                            {{ ticket.idmatch.nomEquipe2 }}   </h2>
+
+
+
+
+
+
+                        <ul class="cd-item-action">
+                            <li><button class="add-to-cart">Add to cart</button></li>
+                            <li><a href="#0">Learn more</a></li>
+                        </ul> <!-- cd-item-action -->
+
+                        <!--</div> <!-- cd-item-info -->
+                        <a href="#0" class="cd-close">Close</a>
+
+                        <!--   </div> <!-- cd-quick-view -->
+
+
+                        <script src="{{ asset('jsS/') }}velocity.min.js"></script>
+                        <script src="{{ asset('jsS/') }}main.js"></script> <!-- Resource jQuery -->
+                        <script src="{{ asset('jsS/') }}modernizr.js"></script> <!-- Modernizr -->
+
+                        <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'>
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+        </div>
+        {% endfor %}
+    {% endblock %}
+        <!-- affichage 4-->
+
+{% extends 'layout.html.twig' %}
+{% block body %}
+    {%  for ticket in ticketss %}
+<div class="list-group">
+
+    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+        <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">{{ ticket.idmatch.nomEquipe1 }} VS
+                {{ ticket.idmatch.nomEquipe2 }}</h5>
+
+        </div>
+        <p class="mb-1">    {{ ticket.idmatch.nomStade }}</p>
+        <p class="mb-1">     {{ ticket.idmatch.date }}</p>
+        <p class="mb-1">   {{ ticket.idmatch.heure }}</p>
+        <p class="mb-1">   {{ ticket.categories }}</p>
+        <p class="mb-1">  {{ ticket.prix }}</p>
+        <p class="mb-1">   {{ ticket.nbticket }}</p>
+        <p class="mb-1">  {{ ticket.idAnnonceur.username }} </p>
+
+     <!--   <small class="text-muted">Donec id elit non mi porta.</small>-->
+    </a>
+
+</div>
+    {% endfor %}
+{% endblock %}
+            <!--  mes tickets-->
+
+
+            <form method="post" action="{{ path('gestionticket_mestticket') }}">
+
+
+                <table id="exemple" border="2">
+
+                    <thead>
+                    <tr>
+                        <th>  Equipe1 </th>
+                        <th> Equipe2</th>
+                        <th>  Stade</th>
+
+                        <th> Date</th>
+                        <th> Heure</th>
+                        <th> Catagorie</th>
+                        <th>  Prix</th>
+                        <th>  NbTickets</th>
+                        <th>moyenne</th>
+                        <th>annonceur</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    {%  for ticket in ticketss %}
+                        <tr>
+                            <td> {{ ticket.idmatch.nomEquipe1 }}</td>
+                            <td> {{ ticket.idmatch.nomEquipe2 }}</td>
+                            <td> {{ ticket.idmatch.nomStade }}</td>
+                            <td> {{ ticket.idmatch.date }}</td>
+                            <td> {{ ticket.idmatch.heure }}</td>
+                            <td> {{ ticket.categories }}</td>
+                            <td> {{ ticket.prix }}</td>
+                            <td> {{ ticket.nbticket }}</td>
+                            <td>  {{ ticket.moyenne }}</td>
+                            <td>  {{ ticket.idAnnonceur.username }}</td>
+
+
+
+                        </tr>
+
+                    {% endfor %}
+                    </tbody>
+                </table>
+
+            </form>
+        </div>
+
+<!--liste groupe-->
+
+    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+        <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">{{ ticket.idmatch.nomEquipe1 }} VS
+                {{ ticket.idmatch.nomEquipe2 }}</h5>
+
+        </div>
+        <p class="mb-1">    {{ ticket.idmatch.nomStade }}</p>
+        <p class="mb-1">     {{ ticket.idmatch.date }}</p>
+        <p class="mb-1">   {{ ticket.idmatch.heure }}</p>
+        <p class="mb-1">   {{ ticket.categories }}</p>
+        <p class="mb-1">  {{ ticket.prix }}</p>
+        <p class="mb-1">   {{ ticket.nbticket }}</p>
+        <p class="mb-1">  {{ ticket.idAnnonceur.username }} </p>
+
+        <!--   <small class="text-muted">Donec id elit non mi porta.</small>-->
+    </a>
+
+
+
+    <!--affichage5-->
+
+{% extends 'layout.html.twig' %}
+{% block body %}
+
+<div>
+
+
+
+
+    <div id="wrapper">
+        <div id="main">
+
+            <div id="content">
+                <div id="aside1">
+                    <div class="ad-box">Tickets</div>
+                    <div id="fixed-example1">
+                        <h2>Sidebar <span>(fixed)</span></h2>
+                        <ul class="sample-nav">
+                            <li><a href="#">Item 1</a></li>
+                            <li><a href="#">Item 2</a></li>
+                            <li><a href="#">Item 3</a></li>
+                            <li><a href="#">Item 4</a></li>
+                            <li><a href="#">Item 5</a></li>
+                            <li><a href="#">Item 6</a></li>
+                            <li><a href="#">Item 7</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+
+                <div id="aside2">
+                    <div class="ad-box">Tickets</div>
+
+                    <div id="fixed-example2">
+                        <h2>Sidebar <span>(absolute)</span></h2>
+                        <ul class="sample-nav">
+                            <li><a href="#">Ajouter Un Ticket</a></li>
+                            <li><a href="{{ path('gestionticket_mestticket')}}">Mes annonces</a></li>
+
+                        </ul>
+                    </div>
+
+                </div>
+                <div id="column">
+                    <h2>Content</h2>
+                    {%  for ticket in ticketss %}
+                        <div class="list-group">
+
+
+
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-xs-12">
+
+                                        <div class="card">
+
+                                            <div class="card-image">
+                                                <a href="#" type="button" class="btn">
+                                                    <img src="https://farm3.staticflickr.com/2764/4350166105_be2c85cdb5_z_d.jpg" alt="user-image" />
+                                                </a>
+                                            </div>
+
+                                            <div class="card-modal">Take a look at my Profile!</div>
+
+                                            <div class="card-info">
+
+                                                <div class="name">
+                                                    <p>Nunc Lorem Interdum</p>
+                                                </div>
+
+                                                <div class="social-network">
+                                                    <a href="#" class="icon youtube">
+                                                        <i class="fa fa-youtube"></i>
+                                                    </a>
+                                                    <a href="#" class="icon twitter">
+                                                        <i class="fa fa-twitter"></i>
+                                                    </a>
+                                                    <a href="#" class="icon facebook">
+                                                        <i class="fa fa-facebook"></i>
+                                                    </a>
+                                                </div>
+
+                                                <hr>
+
+                                                <div class="content">
+                                                    <p>
+                                                        <b>Info:</b>
+                                                        Praesent faucibus sem tortor, sed imperdiet enim interdum in. Etiam feugiat rutrum ex, quis maximus quam commodo eu. Pellentesque eget tortor convallis, vestibulum tortor in, lacinia diam.
+                                                    </p>
+                                                    <p><b>Skills:</b> Feugiat, Ipsum, Pellentesque, Maximus</p>
+                                                    <p><b>Website:</b> <a href="https://codepen.io/jaguilera">www.codepen.io</a></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <link rel="stylesheet" href="{{ asset('gestionticket/css/') }}style.css">
+
+
+
+    <script  src="{{ asset('gestionticket/js/') }}index.js"></script>
+
+
+    <script  src="{{ asset('gestionticket/js/') }}index1.js"></script>
+
+    <link rel="stylesheet" href="{{ asset('gestionticket/css/') }}style1.css">
+
+    </div>
+
+{% endblock %}
+    <!---ajoutt->
+
+    <form method="post" action="{{ path('gestionticket_add_ticket') }}">
+
+        Prix: <input type ="number" name="prix">
+        <br>
+        Categiries: <select name="categories">
+            <option value="virage"> virage </option>
+            <option value="peluse"> peluse </option>
+            <option value="gradin"> gradin </option>
+        </select>
+
+        <br>
+        Matchs : <select name="match">
+            {% for match in matchs %}
+                <option value="{{ match.idMatch}}">{{ match.nomEquipe1}} VS {{ match.nomEquipe2}}</option>
+            {% endfor %}
+        </select>
+        <br>
+        NibreTickets:  <input type="number" name="nombreticket" min="0">
+        <br>
+        <input type="submit" value="Ajouter">
+        <input type="text" name="idannon" >
+
+    </form>
+    <!--ajout 2->
+    {% extends 'layout.html.twig' %}
+{% block body %}
+<div id="column">
+<form method="post" action="{{ path('gestionticket_add_ticket') }}">
+<div class="modal-wrap">
+    <div class="modal-header"><span class="is-active"></span><span></span><span></span></div>
+    <div class="modal-bodies">
+
+        <div class="modal-body modal-body-step-1 is-showing">
+            <div class="title">Step 1</div>
+            <div class="description">Hello there, Let's play a game.</div>
+                Matchs : <select name="match">
+                    {% for match in matchs %}
+                        <option value="{{ match.idMatch}}">{{ match.nomEquipe1}} VS {{ match.nomEquipe2}}</option>
+                    {% endfor %}
+
+                <br>
+                </select>
+                Categiries: <select name="categories">
+                    <option value="virage"> virage </option>
+                    <option value="peluse"> peluse </option>
+                    <option value="gradin"> gradin </option>
+                </select>
+                NibreTickets:  <input type="number" name="nombreticket" min="0">
+                <br>
+                Prix: <input type ="number" name="prix">
+                <div class="text-center">
+                    <div class="button">Valider</div>
+                </div>
+        </div>
+
+        <div class="modal-body modal-body-step-3">
+            <div class="title">Step 2</div>
+            <div class="description">Check your email for the game results.</div>
+            <div class="text-center">
+
+                <input type="submit" value="Ajouter">
+            </div>
+        </div>
+    </div>
+</div>
+
+</form>
+
+
+
+
+
+
+<script  src="{{ asset('gestionticket/js/') }}indexajout.js"></script>
+
+
+    <link rel="stylesheet" href="{{ asset('gestionticket/css/') }}styleajout.css">
+    <link rel="stylesheet" href="{{ asset('gestionticket/css/') }}style1.css">
+
+</div>
+{% endblock %}
+<!--modification-->
+
+{% extends 'layout.html.twig' %}
+{% block body %}
+<form method="post" action="{{ path('gestionticket_modifier_ticket',{'id':ticketss.idTicket}) }}">
+             <p> Match :{{ ticketss.idmatch.nomEquipe1 }} VS {{ ticketss.idmatch.nomEquipe2 }}</p>
+            <p> Stade : {{ ticketss.idmatch.nomStade }}</p>
+            <p> Date: {{ ticketss.idmatch.date }}:{{ ticketss.idmatch.heure }}</p>
+
+    Prix: <input type ="number" name="prix" value="{{ ticketss.prix }}">
+    <br>
+    Categiries: <select name="categories" value="{{ ticketss.categories }}">
+        <option value="virage"> virage </option>
+        <option value="peluse"> peluse </option>
+        <option value="gradin"> gradin </option>
+    </select>
+    <br>
+    NibreTickets:  <input type="number" name="nombreticket" value="{{ ticketss.nbticket }}" min="0">
+
+    <br>
+        <input  type="submit" name ="Confirmer">
+</form>
+
+{% endblock %}
+    <!--affichage ticket 3adi -->
+
+{% extends 'layout.html.twig' %}
+{% block body %}
+
+<div>
+
+
+
+
+    <div id="wrapper">
+        <div id="main">
+
+            <div id="content">
+                <div id="aside1">
+                    <div class="ad-box">Tickets</div>
+                    <div id="fixed-example1">
+                        <h2>Sidebar <span>(fixed)</span></h2>
+                        <ul class="sample-nav">
+                            <li><a href="#">Item 1</a></li>
+                            <li><a href="#">Item 2</a></li>
+                            <li><a href="#">Item 3</a></li>
+                            <li><a href="#">Item 4</a></li>
+                            <li><a href="#">Item 5</a></li>
+                            <li><a href="#">Item 6</a></li>
+                            <li><a href="#">Item 7</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+
+                <div id="aside2">
+                    <div class="ad-box">Tickets</div>
+
+                    <div id="fixed-example2">
+                        <h2>Sidebar <span>(absolute)</span></h2>
+                        <ul class="sample-nav">
+                            <li><a href="#">Ajouter Un Ticket</a></li>
+                            <li><a href="{{ path('gestionticket_mestticket')}}">Mes annonces</a></li>
+
+                        </ul>
+                    </div>
+
+                </div>
+                <div id="column">
+                    <h2>Content</h2>
+                    {%  for ticket in ticketss %}
+                        <div class="list-group">
+
+                            <div class="container">
+                            <div class="item">
+                                <div class="item-right">
+                                    <h2 class="num">23</h2>
+                                    <p class="day"> {{ ticket.idAnnonceur.username }}</p>
+                                    <span class="up-border"></span>
+                                    <span class="down-border"></span>
+                                </div> <!-- end item-right -->
+
+                                <div class="item-left">
+                                    <p class="event">{{ ticket.idmatch.nomEquipe1 }} VS
+                                        {{ ticket.idmatch.nomEquipe2 }}</p>
+                                   <h2 class="title">  {{ ticket.categories }}</h2>
+
+                                    <div class="sce">
+                                        <div class="icon">
+                                            <i class="fa fa-table"></i>
+                                        </div>
+                                        <p> {{ ticket.idmatch.date }} <br/>
+                                        <div class="icon">
+                                            <i class="fa fa-clock-o"></i>
+                                        </div>{{ ticket.idmatch.heure }} Am</p>
+                                    </div>
+
+                                    <div class="fix"></div>
+                                    <div class="loc">
+                                        <div class="icon">
+                                            <i class="fa fa-map-marker"></i>
+                                        </div>
+                                        <p> {{ ticket.idmatch.nomStade }}</p>
+                                    </div>
+                                    <div class="fix"></div>
+                                    <div class="sce">
+                                            <div class="icon">
+                                                <i class="fa fa-ticket"></i>
+                                            </div>
+                                            <p> nbr ticket {{ ticket.nbticket }} </p>
+
+                                        </div>
+
+
+                                    <div class="fix"></div>
+                                    <button class="tickets">Tickets</button>
+                                </div> <!-- end item-right -->
+                            </div> <!-- end item -->
+                            </div>
+
+
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <link rel="stylesheet" href="{{ asset('gestionticket/css/') }}style.css">
+
+    <script  src="{{ asset('gestionticket/js/') }}index.js"></script>
+    <link rel="stylesheet" href="{{ asset('gestionticket/css/') }}style1.css">
+
+
+
+
+
+
+    </div>
+
+{% endblock %}
+    <!--modifier 3-->
+
+
+    {% extends 'layout.html.twig' %}
+    {% block body %}
+
+
+
+
+
+    <div>
+
+
+
+
+        <div id="wrapper">
+            <div id="main">
+
+                <div id="content">
+                    <div id="aside1">
+                        <div class="ad-box">Tickets</div>
+                        <div id="fixed-example1">
+                            <h2>Sidebar <span>(fixed)</span></h2>
+                            <ul class="sample-nav">
+                                <li><a href="#">Item 1</a></li>
+                                <li><a href="#">Item 2</a></li>
+                                <li><a href="#">Item 3</a></li>
+                                <li><a href="#">Item 4</a></li>
+                                <li><a href="#">Item 5</a></li>
+                                <li><a href="#">Item 6</a></li>
+                                <li><a href="#">Item 7</a></li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                    <div id="aside2">
+                        <div class="ad-box">Tickets</div>
+
+                        <div id="fixed-example2">
+                            <h2>Sidebar <span>(absolute)</span></h2>
+                            <ul class="sample-nav">
+                                <li><a href="#">Ajouter Un Ticket</a></li>
+                                <li><a href="{{ path('gestionticket_mestticket')}}">Mes annonces</a></li>
+
+                            </ul>
+                        </div>
+
+                    </div>
+                    <div id="column">
+                        <h2>Content</h2>
+                        <form method="post" action="{{ path('gestionticket_mestticket') }}">
+                            {%  for ticket in ticketss %}
+                                <div class="list-group">
+
+                                    <div class="container">
+                                        <div class="item">
+                                            <div class="item-right">
+                                                <h2 class="num">23</h2>
+                                                <p class="day"> {{ ticket.idAnnonceur.username }}</p>
+                                                <span class="up-border"></span>
+                                                <span class="down-border"></span>
+                                            </div> <!-- end item-right -->
+
+                                            <div class="item-left">
+                                                <p class="event">{{ ticket.idmatch.nomEquipe1 }} VS
+                                                    {{ ticket.idmatch.nomEquipe2 }}</p>
+                                                <h2 class="title">  {{ ticket.categories }}</h2>
+
+                                                <div class="sce">
+                                                    <div class="icon">
+                                                        <i class="fa fa-table"></i>
+                                                    </div>
+                                                    <p> {{ ticket.idmatch.date }} <br/>
+                                                    <div class="icon">
+                                                        <i class="fa fa-clock-o"></i>
+                                                    </div>{{ ticket.idmatch.heure }} Am</p>
+                                                </div>
+
+                                                <div class="fix"></div>
+                                                <div class="loc">
+                                                    <div class="icon">
+                                                        <i class="fa fa-map-marker"></i>
+                                                    </div>
+                                                    <p> {{ ticket.idmatch.nomStade }}</p>
+                                                </div>
+                                                <div class="fix"></div>
+                                                <div class="sce">
+                                                    <div class="icon">
+                                                        <i class="fa fa-ticket"></i>
+                                                    </div>
+                                                    <p> nbr ticket {{ ticket.nbticket }} </p>
+
+                                                    <div class="fix"></div>
+                                                    <button >   <a href="{{ path('gestionticket_supprimer_ticket',{'id':ticket.idTicket}) }}" >Supprimer</a> </button>
+                                                    <div class="fix"></div>
+                                                    <button ><a href="{{ path('gestionticket_modifier_ticket',{'id':ticket.idTicket}) }}">modifier</a> </button>
+                                                    <div class="fix"></div>
+                                                    <button class="tickets">Tickets</button>
+                                                </div> <!-- end item-right -->
+                                            </div> <!-- end item -->
+                                        </div>
+
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <link rel="stylesheet" href="{{ asset('gestionticket/css/') }}style.css">
+
+    <script  src="{{ asset('gestionticket/js/') }}index.js"></script>
+    <link rel="stylesheet" href="{{ asset('gestionticket/css/') }}style1.css">
+
+
+
+
+
+
+</div>
+
+{% endblock %}
